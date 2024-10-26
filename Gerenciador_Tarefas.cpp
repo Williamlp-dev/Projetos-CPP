@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <windows.h> // Para SetConsoleOutputCP
+#include <windows.h>
 
 using namespace std;
 
-// Estrutura que representa uma tarefa
+
 struct Tarefa
 {
     string titulo;
@@ -15,19 +15,19 @@ struct Tarefa
     Tarefa(string t, string desc) : titulo(t), descricao(desc), concluida(false) {}
 };
 
-// Função para adicionar uma nova tarefa
+
 void adicionarTarefa(vector<Tarefa> &tarefas)
 {
     string titulo, descricao;
     cout << "Título da tarefa: ";
-    getline(cin >> ws, titulo); // ws ignora espaços em branco
+    getline(cin >> ws, titulo);
     cout << "Descrição da tarefa: ";
     getline(cin, descricao);
     tarefas.push_back(Tarefa(titulo, descricao));
     cout << "Tarefa adicionada: " << titulo << endl;
 }
 
-// Função para remover uma tarefa
+
 void removerTarefa(vector<Tarefa> &tarefas)
 {
     string titulo;
@@ -46,7 +46,7 @@ void removerTarefa(vector<Tarefa> &tarefas)
     cout << "Tarefa não encontrada: " << titulo << endl;
 }
 
-// Função para marcar uma tarefa como concluída
+
 void concluirTarefa(vector<Tarefa> &tarefas)
 {
     string titulo;
@@ -65,7 +65,6 @@ void concluirTarefa(vector<Tarefa> &tarefas)
     cout << "Tarefa não encontrada: " << titulo << endl;
 }
 
-// Função para exibir todas as tarefas
 void exibirTarefas(const vector<Tarefa> &tarefas)
 {
     if (tarefas.empty())
@@ -82,10 +81,10 @@ void exibirTarefas(const vector<Tarefa> &tarefas)
 
 int main()
 {
-    // Configura a saída do console para UTF-8
+
     SetConsoleOutputCP(CP_UTF8);
 
-    vector<Tarefa> tarefas; // Vetor para armazenar as tarefas
+    vector<Tarefa> tarefas;
     int escolha;
 
     while (true)
