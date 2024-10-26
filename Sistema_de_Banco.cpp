@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <iomanip>   // Para std::setprecision
-#include <windows.h> // Para SetConsoleOutputCP
+#include <iomanip> 
+#include <windows.h> 
 
 using namespace std;
 
-// Classe que representa uma conta bancária
+
 class Conta
 {
 private:
@@ -15,15 +15,12 @@ private:
     double saldo;
 
 public:
-    // Construtor
     Conta(string t, int n) : titular(t), numero(n), saldo(0.0) {}
 
-    // Métodos para acessar dados da conta
     string getTitular() const { return titular; }
     int getNumero() const { return numero; }
     double getSaldo() const { return saldo; }
 
-    // Método para depositar
     void depositar(double valor)
     {
         if (valor > 0)
@@ -37,7 +34,6 @@ public:
         }
     }
 
-    // Método para sacar
     void sacar(double valor)
     {
         if (valor > 0 && valor <= saldo)
@@ -51,7 +47,6 @@ public:
         }
     }
 
-    // Método para transferir dinheiro para outra conta
     void transferir(double valor, Conta &destino)
     {
         if (valor > 0 && valor <= saldo)
@@ -67,21 +62,18 @@ public:
     }
 };
 
-// Classe para gerenciar o banco
 class Banco
 {
 private:
-    vector<Conta> contas; // Armazena as contas
+    vector<Conta> contas;
 
 public:
-    // Método para criar uma nova conta
     void criarConta(string titular, int numero)
     {
         contas.emplace_back(titular, numero);
         cout << "Conta criada com sucesso para " << titular << "!" << endl;
     }
 
-    // Método para encontrar uma conta pelo número
     Conta *encontrarConta(int numero)
     {
         for (auto &conta : contas)
@@ -94,7 +86,6 @@ public:
         return nullptr;
     }
 
-    // Método para remover uma conta
     void removerConta(int numero)
     {
         for (size_t i = 0; i < contas.size(); i++)
@@ -109,7 +100,6 @@ public:
         cout << "Conta não encontrada: " << numero << endl;
     }
 
-    // Método para listar todas as contas
     void listarContas() const
     {
         cout << "Contas no Banco:" << endl;
@@ -122,7 +112,6 @@ public:
 
 int main()
 {
-    // Configura a saída do console para UTF-8
     SetConsoleOutputCP(CP_UTF8);
 
     Banco banco;
@@ -140,7 +129,7 @@ int main()
         cout << "7. Sair\n";
         cout << "Escolha uma opção: ";
         cin >> opcao;
-        cin.ignore(); // Limpa o buffer do cin
+        cin.ignore();
 
         switch (opcao)
         {
